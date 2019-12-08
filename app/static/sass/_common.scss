@@ -1,5 +1,176 @@
 /**************** common css start ****************/
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto:300,400,500,700&display=swap');
+$font_stack_1: 'Roboto', sans-serif;
+$font_stack_2: 'Roboto Condensed', sans-serif;
+$body-font: 'Roboto', sans-serif;
+$title-font: 'Roboto Condensed', sans-serif;
+/*Color Variables*/
+
+$primary-color  : #2f7dfc;
+$title-color    : #2a2a2a;
+$text-color     : #797979;
+$offwhite       : #f6f6f6;
+$white: #fff;
+$section_bg: #f4f4f4;
+$white_color: #fff;
+$black_color: #000;
+$menu_color: #000;
+$icon_color: #0c2e60;
+$icon_bg: #f0f4f6;
+$author_text_color: #556172;
+$section_bg: #f4f4f4;
+$color_1: #f8fbff;
+$color_2: #fffbf9;
+$color_3: #fafafa;
+$color_4: #fffcf4;
+$btn_bg: #2f7dfc;
+$primary_color: #2f7dfc;
+$btn_hover: #f5790b;
+$section_bg_1: #e8f0f2;
+$heading_color: #1a1a1a;
+$heading_color2: #ff8b23;
+$p_color: #606060;
+$font_1: #666666;
+$font_2: #222222;
+$font_3: #7f7f7f;
+$font_4: #8a8a8a;
+$font_5: #999999;
+$font_6: #666666;
+$font_7: #777777;
+$font_8: #888888;
+$font_d: #dddddd;
+$border_color: #edeff2;
+$footer_bg: #303030;
+$sidebar_bg: #fbf9ff;
+
+
+
+$medium_device : 'only screen and (min-width: 992px) and (max-width: 1200px)';
+$tab_device:'only screen and (min-width: 768px) and (max-width: 991px)';
+$large_mobile: 'only screen and (min-width: 576px) and (max-width: 767px)';
+$tab:'(max-width: 991px)';
+$small_mobile:'(max-width: 576px)';
+$xs_mobile:'(max-width: 420px)';
+$sm_mobile:'only screen and (min-width: 421px) and (max-width: 575px)';
+$big_screen:'only screen and (min-width: 1200px) and (max-width: 1440px)';
+$extra_big_screen: 'only screen and (min-width: 1200px) and (max-width: 3640px)';
+  
+  
+@mixin background($imgpath,$position: center,$size: cover,$repeat: no-repeat) {
+    background: {
+        image: url($imgpath);
+        position: $position;
+        repeat: $repeat;
+        size: $size;
+    }
+}
+@mixin transform_time($total_time) {
+    -webkit-transition: $total_time;
+    transition: $total_time;
+}
+@mixin placeholder {
+	&.placeholder {
+		@content;
+	}
+	&:-moz-placeholder {
+		@content;
+	}
+	&::-moz-placeholder {
+		@content;
+	}
+	&::-webkit-input-placeholder {
+		@content;
+	}
+}
+@mixin transition($args: all 0.6s ease 0s) {
+	-webkit-transition: $args;
+	-moz-transition: $args;
+	-o-transition: $args;
+	transition: $args;
+}
+
+@mixin keyframes ($animation-name) {
+	@-webkit-keyframes #{$animation-name} {
+		@content;
+	}
+	@-moz-keyframes #{$animation-name} {
+		@content;
+	}
+	@-o-keyframes #{$animation-name} {
+		@content;
+	}
+	@keyframes #{$animation-name} {
+		@content;
+	}
+}
+@mixin transition($property: all,
+$duration: 300ms,
+$animate: linear,
+$delay:0s) {
+    transition: $property $duration $animate $delay;
+}
+
+@mixin transform($transform) {
+    -webkit-transform: $transform;
+    -moz-transform: $transform;
+    -o-transform: $transform;
+    -ms-transform: $transform;
+    transform: $transform;
+}
+
+// Placeholder Mixins
+@mixin placeholder {
+    &.placeholder {
+        @content;
+    }
+    &:-moz-placeholder {
+        @content;
+    }
+    &::-moz-placeholder {
+        @content;
+    }
+    &::-webkit-input-placeholder {
+        @content;
+    }
+}
+/**************** extend css start ****************/
+%custom_btn_bg_1{
+    background-image: linear-gradient( 16deg, rgb(255,0,90) 0%, rgb(255,93,45) 64%, rgb(255,186,0) 100%);  
+}
+
+
+%custom_btn_bg_2{
+    background-image: linear-gradient(to left, #57ddff 0%, #57ddff 51%, #57ddff 100%);  
+}
+%custom_btn_bg_3{
+    background-image: linear-gradient(to left, #fff 0%, #fff 51%, #fff 100%);  
+}
+%rank_bg{
+    background: -moz-linear-gradient( 16deg, rgb(250,113,205) 0%, rgb(181,77,243) 100%);
+    background: -webkit-linear-gradient( 16deg, rgb(250,113,205) 0%, rgb(181,77,243) 100%);
+    background: -ms-linear-gradient( 16deg, rgb(250,113,205) 0%, rgb(181,77,243) 100%);
+    box-shadow: 0px 10px 20px 0px rgba(196, 113, 245, 0.3);
+}
+  
+%overlay_bg{
+    background: -moz-linear-gradient( 16deg, rgb(250,113,205) 0%, rgb(181,77,243) 100%);
+    background: -webkit-linear-gradient( 16deg, rgb(250,113,205) 0%, rgb(181,77,243) 100%);
+    background: -ms-linear-gradient( 16deg, rgb(250,113,205) 0%, rgb(181,77,243) 100%);
+}
+%pricing_btn_bg_bg {
+    background: -moz-linear-gradient( 90deg, rgb(173,35,254) 0%, rgb(250,96,199) 100%);
+    background: -webkit-linear-gradient( 90deg, rgb(173,35,254) 0%, rgb(250,96,199) 100%);
+    background: -ms-linear-gradient( 90deg, rgb(173,35,254) 0%, rgb(250,96,199) 100%);
+    box-shadow: 0px 8px 15px 0px rgba(180, 41, 248, 0.25);
+}
+  
+%icon_bg{
+    background: -moz-linear-gradient( 45deg, rgb(173,35,254) 0%, rgb(250,96,199) 100%);
+    background: -webkit-linear-gradient( 45deg, rgb(173,35,254) 0%, rgb(250,96,199) 100%);
+    background: -ms-linear-gradient( 45deg, rgb(173,35,254) 0%, rgb(250,96,199) 100%);
+}
+
+/**************** extend css start ****************/
 
 body {
     font-family: $font_stack_1;

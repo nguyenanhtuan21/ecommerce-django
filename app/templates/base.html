@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% include "modules/stylesheet.html" %}
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<body>
+    {% include "modules/header.html" %}
+
+    {% block content %}
+    {% endblock content %}
+
+    {% include "modules/services.html" %}
+
+    {% include "modules/instagram.html" %}
+
+    {% include "modules/footer.html"%}
+
+    {% include "modules/scripts.html" %}
+</body>
+</html>
