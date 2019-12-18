@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block title %}
 Login
 {% endblock title %}
-
 {% block content %}
 <!--================Home Banner Area =================-->
     <!-- breadcrumb start-->
@@ -32,7 +32,7 @@ Login
                             <h2>New to our Shop?</h2>
                             <p>There are advances being made in science and technology
                                 everyday, and a good example of this is the</p>
-                            <a href="#" class="btn_3">Create an Account</a>
+                            <a href="#" class="btn_3" onclick="document.getElementById('id01').style.display='block'">Create an Account</a>
                         </div>
                     </div>
                 </div>
@@ -41,25 +41,30 @@ Login
                         <div class="login_part_form_iner">
                             <h3>Welcome Back ! <br>
                                 Please Sign in now</h3>
-                            <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+                            <form class="row contact_form" action="" method="post" novalidate="novalidate">
+                                {% csrf_token %}
                                 <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="name" name="name" value=""
+                                    <input type="text" class="form-control" id="username" name="username" value=""
                                         placeholder="Username">
                                 </div>
                                 <div class="col-md-12 form-group p_star">
                                     <input type="password" class="form-control" id="password" name="password" value=""
                                         placeholder="Password">
                                 </div>
+                                {% if error  %}
+                                    <p style="padding-left:1rem; color:red;">{{error}}</p>
+                                {% endif %}
                                 <div class="col-md-12 form-group">
                                     <div class="creat_account d-flex align-items-center">
                                         <input type="checkbox" id="f-option" name="selector">
                                         <label for="f-option">Remember me</label>
                                     </div>
-                                    <button type="submit" value="submit" class="btn_3">
+                                    <button type="submit" value="submit" class="btn-primary btn btn-block mt-3 mb-3">
                                         log in
                                     </button>
                                     <a class="lost_pass" href="#">forget password?</a>
                                 </div>
+                                
                             </form>
                         </div>
                     </div>
@@ -67,6 +72,49 @@ Login
             </div>
         </div>
     </section>
+            <div id="id01" class="modal">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <form class="modal-content" action="/action_page.php">
+            <div class="container">
+            <h1>Sign Up</h1>
+            <p>Please fill in this form to create an account.</p>
+            <hr>
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+
+            <label for="psw-repeat"><b>Repeat Password</b></label>
+            <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+            
+            <label>
+                <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+            </label>
+
+            <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+            <div class="clearfixs">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                <button type="submit" class="signupbtn">Sign Up</button>
+            </div>
+            </div>
+        </form>
+        </div>
+
+        <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+        }
+        </script>
+
+
     <!--================login_part end =================-->
 {% endblock content %}
 

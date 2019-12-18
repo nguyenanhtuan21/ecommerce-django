@@ -1,6 +1,14 @@
 from django.shortcuts import render
 from django.core.files.storage import FileSystemStorage
+from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponseRedirect
+
+from django.shortcuts import redirect
 # Create your views here.
+def index(request):
+    pass
+    return render(request,'index.html')
+
 
 def about(request):
     return render(request,'about.html')
@@ -23,14 +31,30 @@ def confirmation(request):
 def contact(request):
     return render(request,'contact.html')
 
-def index(request):
-    return render(request,'index.html')
 
 def elements(request):
     return render(request,'elements.html')
 
-def login(request):
-    return render(request,'login.html')
+def user_login(request):
+    context = {}
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username= username, password= password)
+        if user:
+            login(request, user)
+            return redirect('index')
+        else:
+            context['error'] = "Provide valid credentials !!"
+            return render(request, "login.html", context)
+    else:
+        return render(request, "login.html", context)
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('user_login')
+
 
 def singleBlog(request):
     return render(request,'single-blog.html')

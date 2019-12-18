@@ -9,10 +9,11 @@ from .views import (
     contact,
     index,
     elements,
-    login,
+    user_login,
     singleBlog,
     singleProduct,
     tracking,
+    user_logout,
 )
 urlpatterns = [
     path('about/',about,name='about'),
@@ -24,8 +25,9 @@ urlpatterns = [
     path('contact/',contact,name='contact'),
     path('',index,name='index'),
     path('elements/',elements,name='elements'),
-    path('login/',login,name='login'),
+    path('login/',user_login,name='user_login'),
     path('single-blog',singleBlog,name='singleblog'),
     path('single-product/',singleProduct,name='single-product'),
-    path('tracking/',tracking,name='tracking')
+    path('tracking/',tracking,name='tracking'),
+    path('logout/',user_logout,name='user_logout'),
 ]
