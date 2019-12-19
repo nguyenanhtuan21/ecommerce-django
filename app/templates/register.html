@@ -1,0 +1,34 @@
+{% extends "base.html" %} 
+{% load static %} 
+{% load crispy_forms_tags %}
+{% block title %} 
+    Register 
+{% endblock title %} 
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <form class="form-horizontal" method="POST">
+                {% csrf_token %}
+                <fieldset>
+                    <div id="legend">
+                        <legend class="text-lg-center">Register</legend>
+                    </div>
+                    {{form|crispy}}
+
+                    <div class="control-group">
+                        <!-- Button -->
+                        <div class="controls">
+                            <button class="btn btn-success center mb-5" type="submit">Register</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+
+    </div>
+</div>
+{% endblock content %}

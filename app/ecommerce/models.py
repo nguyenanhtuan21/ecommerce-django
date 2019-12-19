@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+
 # Create your models here.
 SIZE = (
     ('S','S'),
@@ -67,7 +68,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='Profile/', height_field=None, width_field=None, max_length=None)
     address = models.TextField(max_length=300)
-    birthday = models.DateTimeField( auto_now=False, auto_now_add=False)
+    birthday = models.DateTimeField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):

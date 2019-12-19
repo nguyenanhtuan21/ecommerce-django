@@ -8,12 +8,12 @@ from .views import (
     confirmation,
     contact,
     index,
-    elements,
     user_login,
     singleBlog,
     singleProduct,
     tracking,
     user_logout,
+    register,
 )
 urlpatterns = [
     path('about/',about,name='about'),
@@ -24,10 +24,11 @@ urlpatterns = [
     path('confirmation/',confirmation,name='confirmation'),
     path('contact/',contact,name='contact'),
     path('',index,name='index'),
-    path('elements/',elements,name='elements'),
     path('login/',user_login,name='user_login'),
     path('single-blog',singleBlog,name='singleblog'),
     path('single-product/',singleProduct,name='single-product'),
     path('tracking/',tracking,name='tracking'),
     path('logout/',user_logout,name='user_logout'),
+    path('register/',register,name='register')
+
 ]
