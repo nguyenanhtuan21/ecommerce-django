@@ -6,14 +6,19 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 
+### import models 
+from .models import Instagram
+
 from django.shortcuts import redirect
 
 from .forms import SignUpForm
 # Create your views here.
 @login_required(login_url='/login/')
 def index(request):
-    pass
-    return render(request,'index.html')
+    context = {}
+    instagrams = Instagram.objects.all().order_by('-id')[:5]
+    context['instagrams'] = instagrams
+    return render(request,'index.html',context)
 
 
 @login_required(login_url='/login/')
