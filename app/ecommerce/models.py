@@ -80,6 +80,7 @@ class Profile(models.Model):
     image = models.ImageField(upload_to='Profile/', height_field=None, width_field=None, max_length=None)
     address = models.TextField(max_length=300)
     birthday = models.DateTimeField(blank=True, null=True)
+    level = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
