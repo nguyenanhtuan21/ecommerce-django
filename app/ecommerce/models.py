@@ -14,8 +14,8 @@ SIZE = (
 
 CATEGORY = (
     ('TR','TROUSERS'),
-    ('SH','SHIRT'),
-    ('S','SHOES'),
+    ('S','SHIRT'),
+    ('SH','SHOES'),
 )
 COLOR = (
     ('R','Red'),
@@ -67,7 +67,11 @@ class Product(models.Model):
         minus_price = (self.price*self.coupon)/100
         absolute_price = self.price - minus_price
         return absolute_price
-        
+
+    def get_category(self):
+        return dict(CATEGORY)[self.category]
+    def get_color(self):
+        return dict(COLOR)[self.color]
     class Meta:
         ordering = ['-created_at']
 

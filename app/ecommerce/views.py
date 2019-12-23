@@ -5,9 +5,11 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
 
 ### import models 
-from .models import Instagram
+from .models import Instagram,Product
+
 
 from django.shortcuts import redirect
 
@@ -17,7 +19,9 @@ from .forms import SignUpForm
 def index(request):
     context = {}
     instagrams = Instagram.objects.all().order_by('-id')[:5]
+    products = Product.objects.all().order_by('-created_at')[:6]
     context['instagrams'] = instagrams
+    context['products'] = products
     return render(request,'index.html',context)
 
 
@@ -65,7 +69,7 @@ def user_login(request):
             # print(next)
             return redirect('index')
         else:
-            context['error'] = "Provide valid credentials !!"
+            context['error'] = "Fail ! please try log in again !"
             return render(request, "login.html", context)
     else:
         return render(request, "login.html", context)
@@ -79,8 +83,15 @@ def user_logout(request):
 def singleBlog(request):
     return render(request,'single-blog.html')
 
-def singleProduct(request):
-    return render(request,'single-product.html')
+def singleProduct(request, id):
+    context = {}
+    product = get_object_or_404(Product,pk=id)
+    context['product'] = product
+
+    best_seller = Product.objects.all().order_by('-coupon')[:4]
+    context['best_seller'] = best_seller
+    print(context)
+    return render(request,'single-product.html',context)
 @login_required(login_url='/login/')
 def tracking(request):
     return render(request,'tracking.html')
